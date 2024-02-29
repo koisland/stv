@@ -291,8 +291,9 @@ for contig in contigs:
             # fix BUG with cen1 inversion 
             elif contig == 'chr1' and n == max_mon and is_prev_max == False:
                 mons_numbers.pop()
-                stv_name = stv_namer(name, mons_numbers, strand)
-                stvs.append([contig, start, end, stv_name, '0', strand, start, end, '0,0,0'])
+                if len(mons_numbers) > 0:
+                    stv_name = stv_namer(name, mons_numbers, strand)
+                    stvs.append([contig, start, end, stv_name, '0', strand, start, end, '0,0,0'])
                 start = line[1]
                 stv_name = []
                 if n == max_mon:
